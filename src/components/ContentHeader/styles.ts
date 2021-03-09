@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface ITitleContainerProps{
+    lineColor:string
+}
+
 export const Container = styled.div`
     width:100%;
     
@@ -10,7 +14,7 @@ export const Container = styled.div`
     justify-content:space-between;
 `;
 
-export const TitleContainer = styled.div`
+export const TitleContainer = styled.div<ITitleContainerProps>`
     > h2{
         color:${ props => props.theme.colors.white };
 
@@ -18,9 +22,13 @@ export const TitleContainer = styled.div`
             content:'';
             display:block;
             width:55px;
-            border-bottom:10px solid ${ props => props.theme.colors.warning };
+            border-bottom:10px solid ${ props => props.lineColor };
         }
     }
 `;
 
-export const Controllers = styled.div``;
+export const Controllers = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+`;
