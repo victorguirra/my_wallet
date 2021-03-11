@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.aside`
     grid-area:AS;
@@ -33,7 +34,7 @@ export const MenuContainer = styled.nav`
     flex-direction:column;
 `;
 
-export const MenuItem = styled.a`
+export const MenuItem = styled(Link)`
     color:${ props =>  props.theme.colors.info };
     text-decoration:none;
 

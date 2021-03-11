@@ -1,77 +1,220 @@
-import React from 'react';
-import { Container, Content, Filters } from './styles';
+import React, { useMemo, useState, useEffect } from 'react';
+import { Filters } from './styles';
 
 import ContentHeader from '../../components/ContentHeader';
 import SelectInput from '../../components/SelectInput';
 import HistoryFinanceCard from '../../components/HistoryFinanceCard';
 
-const List: React.FC = () => {
-    const monhtsOptons = [
-        { value:1, label:'Janeiro' },
-        { value:2, label:'Fevereiro' },
-        { value:3, label:'Março' },
-        { value:4, label:'Abril' },
-        { value:5, label:'Maio' },
-        { value:6, label:'Junho' },
-        { value:7, label:'Julho' },
-        { value:8, label:'Agosto' },
-        { value:9, label:'Setembro' },
-        { value:10, label:'Outubro' },
-        { value:11, label:'Novembro' },
-        { value:12, label:'Dezembro' },
-    ]
+import formatCurrency from '../../utils/formatCurrency';
+import formatDate from '../../utils/formatDate';
 
-    const yearsOptions = [
-        { value: 2021, label:2021 },
-        { value: 2020, label:2020 },
-        { value: 2019, label:2019 },
-        { value: 2018, label:2018 },
-        { value: 2017, label:2017 },
-        { value: 2016, label:2016 },
-        { value: 2015, label:2015 },
-        { value: 2014, label:2014 },
-        { value: 2013, label:2013 },
-        { value: 2012, label:2012 },
-        { value: 2011, label:2011 },
-        { value: 2010, label:2010 },
-    ]
+import listOfMonths from '../../utils/months'; 
+
+import Gains from '../../repositories/gains';
+import Expenses from '../../repositories/expenses';
+
+interface IRouteParams{
+    match:{
+        params:{
+            type: string;
+        }
+    }
+}
+
+interface IData{
+    description: string;
+    amountFormatted: string;
+    frequency: string;
+    dateFormatted: string;
+    tagColor: string;
+}
+
+const List: React.FC<IRouteParams> = ({ match }) => {
+
+    const [ data, setData ] = useState<IData[]>([]);
+
+    const [ monthSelected, setMonthSelected ] = useState<number>(0);
+    const [ yearSelected, setYearSelected ] = useState<number>(0);
+
+    const [ frequencyFilterSelected, setFrequencyFilterSelected ] = useState(['recorrente', 'eventual']);
+
+    const movementType = match.params.type;
     
-    return(
-        <Container>
+    const pageData = useMemo(() => {
+        
+        return movementType === 'entry-balance' ? {
+            title: 'Entradas',
+            lineColor:'#4E41F0',
+            listData: Gains
+        } : {
+            title:'Saídas',
+            lineColor:'#E44C4E',
+            listData: Expenses
+        };
 
-            <ContentHeader title="Saídas" lineColor="#E44C4E">
-                <SelectInput options={ monhtsOptons } />
-                <SelectInput options={ yearsOptions } />
+    }, [movementType]);
+
+    const monthOptions = useMemo(() => {
+        return listOfMonths.map((month, index) => {
+            return{
+                value: index + 1,
+                label:month,
+            }
+        })
+    }, [])        
+
+    const yearsOptions = useMemo(() => {
+        let uniqueYears: number[] = [];
+        
+        pageData.listData.forEach(item => {
+            const date = new Date(item.date);
+            const year = date.getFullYear();
+
+            if(!uniqueYears.includes(year)){
+                uniqueYears.push(year);
+            }
+        })
+
+        return uniqueYears.map(year => {
+            return{
+                value:year,
+                label:year,
+            }
+        })
+    }, [pageData.listData])
+
+    useEffect(() => {
+        yearsOptions.map((item, index) => {
+            if(index === 0){
+                setYearSelected(item.value);
+            }
+        })
+
+        monthOptions.map((item, index) => {
+            if(index === 0){
+                setMonthSelected(item.value);
+            }
+        })
+    }, [])
+    
+    useEffect(() => {
+        
+        const filteredDate = pageData.listData.filter(item => {
+            const date = new Date(item.date);
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+
+            return month === monthSelected 
+                && year === yearSelected 
+                && frequencyFilterSelected.includes(item.frequency);
+        });
+
+        const formattedData = filteredDate.map(item => {
+            return{
+                description: item.description,
+                amountFormatted: formatCurrency(Number(item.amount)),
+                frequency: item.frequency,
+                dateFormatted: formatDate(item.date),
+                tagColor: item.frequency === 'recorrente' ? '#4E41F0' : '#E44C4E'
+            }
+        })
+
+        setData(formattedData);
+    }, [pageData.listData, monthSelected, yearSelected, frequencyFilterSelected])
+
+    function handleSelectedFrequency(frequency: string){
+        const alreadySelected = frequencyFilterSelected.findIndex(item => item === frequency);
+
+        if(alreadySelected >= 0){
+            const filtered = frequencyFilterSelected.filter(item => item !== frequency)
+            setFrequencyFilterSelected(filtered);
+        }else{
+            setFrequencyFilterSelected((prev => [...prev, frequency]));
+        }
+    }
+
+    function handleMonthSelected(month: string){
+        try{
+            const parseMonth = Number(month);
+            setMonthSelected(parseMonth);
+        }catch{
+            throw new Error('Invalid month value. Is accept 0 - 24.');
+        }
+    }
+
+    function handleYearSelected(year: string){
+        try{
+            const parseMonth = Number(year);
+            setYearSelected(parseMonth);
+        }catch{
+            throw new Error('Invalid year value. Is accept integer numbers.');
+        }
+    }
+
+    return(
+        <div>
+
+            <ContentHeader 
+                title={ pageData.title } 
+                lineColor={ pageData.lineColor }
+            >
+                <SelectInput 
+                    options={ monthOptions } 
+                    defaultValue={ monthSelected }
+                    onChange={ 
+                        (e) => handleMonthSelected(e.target.value) 
+                    }
+                />
+                <SelectInput 
+                    options={ yearsOptions }
+                    defaultValue={ yearSelected } 
+                    onChange={ 
+                        (e) => handleYearSelected(e.target.value) 
+                    }
+                />
             </ContentHeader>
 
             <Filters>
                 <button 
                     type="button"
-                    className="tag-filter tag-filter-recurrent"
+                    className={`
+                        tag-filter 
+                        tag-filter-recurrent 
+                        ${ frequencyFilterSelected.includes('recorrente') && 'tag-actived' }
+                    `}
+                    onClick={ () => handleSelectedFrequency('recorrente') }
                 >
                     Recorrentes
                 </button>
 
                 <button 
                     type="button"
-                    className="tag-filter tag-filter-eventual"
+                    className={`
+                        tag-filter 
+                        tag-filter-eventual 
+                        ${ frequencyFilterSelected.includes('eventual') && 'tag-actived' }
+                    `}
+                    onClick={ () => handleSelectedFrequency('eventual') }
                 >
                     Eventuais
                 </button>
             </Filters>
 
-            <Content>
+            <div>
                     
-                <HistoryFinanceCard 
-                    tagColor="#E44C4E"
-                    title="Conta de Luz"
-                    subtitle="09/03/2021"
-                    amount="R$ 130,00"
-                />
+                { data.map((item, index) => (
+                    <HistoryFinanceCard
+                        key={ index }
+                        tagColor={ item.tagColor }
+                        title={ item.description }
+                        subtitle={ item.dateFormatted }
+                        amount={ item.amountFormatted }
+                    />
+                ))}
                 
-            </Content>
+            </div>
 
-        </Container>
+        </div>
     );
 }
 
