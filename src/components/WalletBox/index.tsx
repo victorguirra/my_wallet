@@ -43,8 +43,6 @@ const WalletBox: React.FC<IWalletBox> = ({
 
             <span>{ title }</span>
 
-            {/* <h1>{ amount }</h1> */}
-
             <h1>
                 <CountUp 
                     end={ amount }
