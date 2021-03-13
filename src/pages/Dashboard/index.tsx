@@ -5,17 +5,17 @@ import ContentHeader from '../../components/ContentHeader';
 import SelectInput from '../../components/SelectInput';
 import WalletBox from '../../components/WalletBox';
 import MessageBox from '../../components/MessageBox';
-import PieChart from '../../components/PieChart';
+import PieChartBox from '../../components/PieChartBox';
+import HistoryBox from '../../components/HistoryBox';
 
 import listOfMonths from '../../utils/months';
 
-import Expenses from '../../repositories/expenses';
 import Gains from '../../repositories/gains';
+import Expenses from '../../repositories/expenses';
 
 import HappyIcon from '../../assets/images/happy.svg';
 import GrinningIcon from '../../assets/images/grinning.svg';
 import SadIcon from '../../assets/images/sad.svg';
-
 
 const Dashboard: React.FC = () => {
     const [ monthSelected, setMonthSelected ] = useState<number>(0);
@@ -128,6 +128,80 @@ const Dashboard: React.FC = () => {
         }
     }, [totalBalance])
 
+    const relationExpensesVersusGains = useMemo(() => {
+        const total = totalGains + totalExpenses;
+
+        const percentGains = (totalGains / total) * 100;
+        const percentExpenses = (totalExpenses / total) * 100;
+        
+        const data = [
+            {
+                name:"Entradas",
+                value:totalGains,
+                percent:Number(percentGains.toFixed(1)),
+                color:'#E44C4E'
+            },
+            {
+                name:"Saídas",
+                value:totalExpenses,
+                percent:Number(percentExpenses.toFixed(1)),
+                color:'#F7931B'
+            }
+        ]
+
+        return data;
+
+    }, [totalGains, totalExpenses])
+
+    const historyData = useMemo(() => {
+        return listOfMonths
+        .map((_, month) => {
+            
+            let amountEntry = 0;
+            Gains.forEach(gain => {
+                const date = new Date(gain.date);
+                const gainMonth = date.getMonth();
+                const gainYear = date.getFullYear();
+
+                if(gainMonth === month && gainYear === yearSelected){
+                    try{
+                        amountEntry += Number(gain.amount);
+                    }catch{
+                        throw new Error('amountEntry is invalid. amountEntry must be valid number.')
+                    }
+                }
+            });
+
+            let amountOutput = 0;
+            Expenses.forEach(expense => {
+                const date = new Date(expense.date);
+                const expenseMonth = date.getMonth();
+                const expenseYear = date.getFullYear();
+
+                if(expenseMonth === month && expenseYear === yearSelected){
+                    try{
+                        amountOutput += Number(expense.amount);
+                    }catch{
+                        throw new Error('amountOutput is invalid. amountOutput must be valid number.')
+                    }
+                }
+            });
+
+            return {
+                monthNumber: month,
+                month: listOfMonths[month].substr(0, 3),
+                amountEntry,
+                amountOutput
+            }
+        })
+        .filter(item => {
+            const currentMonth = new Date().getMonth();
+            const currentYear = new Date().getFullYear();
+
+            return (yearSelected === currentYear && item.monthNumber <= currentMonth) || (yearSelected < currentYear);
+        })
+    }, [yearSelected])
+
     function handleYearSelected(year: string){
         try{
             const parseMonth = Number(year);
@@ -150,7 +224,6 @@ const Dashboard: React.FC = () => {
             }
         })
     }, [])
-
 
     return(
         <Container>
@@ -205,7 +278,13 @@ const Dashboard: React.FC = () => {
                     icon={ message.icon }
                 />
 
-                <PieChart />
+                <PieChartBox data={ relationExpensesVersusGains }/>
+                
+                <HistoryBox 
+                    data={ historyData }
+                    lineColorAmountEntry="#F7931B"
+                    lineColorAmountOutput="#E44C4E"
+                />
 
             </Content>
 

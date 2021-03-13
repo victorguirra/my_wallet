@@ -6,7 +6,7 @@ import GlobalStyles from './assets/styles/GlobalStyles';
 import Routes from './routes';
 
 import dark from './assets/styles/theme/dark';
-//import light from './assets/styles/theme/light';
+import light from './assets/styles/theme/light';
 
 const App: React.FC = () => {
     return(

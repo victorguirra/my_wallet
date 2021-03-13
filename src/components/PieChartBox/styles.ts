@@ -58,7 +58,9 @@ export const Legend = styled.li<ILegendProps>`
         width:45px;
         height:45px;
 
-        font-size:18px;
+        padding:15px;
+
+        font-size:14px;
         border-radius:5px;
 
         background-color:${ props => props.color };
@@ -73,4 +75,8 @@ export const Legend = styled.li<ILegendProps>`
     }
 `
 
-export const SideRight = styled.main``;
+export const SideRight = styled.main`
+    display:flex;
+    flex:1;
+    justify-content:center;
+`;
