@@ -10,7 +10,7 @@ import light from './assets/styles/theme/light';
 
 const App: React.FC = () => {
     return(
-        <ThemeProvider theme={ dark }>
+        <ThemeProvider theme={ light }>
             <GlobalStyles />
             <Routes />
         </ThemeProvider>
