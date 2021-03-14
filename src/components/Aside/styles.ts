@@ -54,3 +54,25 @@ export const MenuItem = styled(Link)`
         margin-right:10px;
     }
 `;
+
+export const MenuButton = styled.button`
+    color:${ props =>  props.theme.colors.info };
+    background-color:transparent;
+
+    font-size:16px;    
+    margin:7px 0;
+
+    display:flex;
+    align-items:center;
+
+    transition:opacity .3s;
+
+    &:hover{
+        opacity:.7;
+    }
+
+    > svg{
+        font-size:22px;
+        margin-right:10px;
+    }
+`;
