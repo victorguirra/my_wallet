@@ -141,7 +141,7 @@ export const ToggleMenu = styled.button`
 export const ThemeToggleFooter = styled.footer<IThemeToggleFooterProps>`
     display:none;
     position:absolute;
-    bottom:30px;
+    bottom:80px;
 
     @media(max-width:800px){
         display:${ props => props.menuIsOpen ? 'flex' : 'none' };
