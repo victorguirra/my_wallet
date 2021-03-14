@@ -95,7 +95,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
                 setMonthSelected(item.value);
             }
         })
-    }, [])
+    }, [yearsOptions, monthOptions])
     
     useEffect(() => {
         

@@ -321,7 +321,7 @@ const Dashboard: React.FC = () => {
                 setMonthSelected(item.value);
             }
         })
-    }, [])
+    }, [yearsOptions, monthOptions])
 
     return(
         <Container>
