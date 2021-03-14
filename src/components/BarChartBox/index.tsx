@@ -27,49 +27,48 @@ interface IBarChartBoxProps{
     }[];
 }
 
-const BarChartBox: React.FC<IBarChartBoxProps> = ({ title, data }) => {
-    return(
-        <Container>
+const BarChartBox: React.FC<IBarChartBoxProps> = ({ title, data }) => (
+    <Container>
 
-            <LeftSide>
-                
-                <h2>{ title }</h2>
+        <LeftSide>
+            
+            <h2>{ title }</h2>
 
-                <LegendContainer>
-                    {
-                        data.map((indicator, index) => (
-                            <Legend key={ index } color={ indicator.color } >
-                                <div>{ indicator.percent }%</div>
-                                <span>{ indicator.name }</span>
-                            </Legend>
-                        ))
-                    }
-                </LegendContainer>
+            <LegendContainer>
+                {
+                    data.map((indicator, index) => (
+                        <Legend key={ index } color={ indicator.color } >
+                            <div>{ indicator.percent }%</div>
+                            <span>{ indicator.name }</span>
+                        </Legend>
+                    ))
+                }
+            </LegendContainer>
 
-            </LeftSide>
+        </LeftSide>
 
-            <RightSide>
-                <ResponsiveContainer>
-                    <BarChart data={ data }>
-                        <Bar dataKey="amount" name="Valor">
-                            { data.map((indicator, index) => (
-                                <Cell 
-                                    key={ index }
-                                    fill={ indicator.color }
-                                    cursor="pointer"
-                                />
-                            ))}
-                        </Bar>
-                        <Tooltip
-                            cursor={{ fill: 'none' }}
-                            formatter={ (value: number) => formatCurrency(value) }
-                        />
-                    </BarChart>
-                </ResponsiveContainer>
-            </RightSide>
+        <RightSide>
+            <ResponsiveContainer>
+                <BarChart data={ data }>
+                    <Bar dataKey="amount" name="Valor">
+                        { data.map((indicator, index) => (
+                            <Cell 
+                                key={ index }
+                                fill={ indicator.color }
+                                cursor="pointer"
+                            />
+                        ))}
+                    </Bar>
+                    <Tooltip
+                        cursor={{ fill: 'none' }}
+                        formatter={ (value: number) => formatCurrency(value) }
+                    />
+                </BarChart>
+            </ResponsiveContainer>
+        </RightSide>
 
-        </Container>
-    )   
-}
+    </Container>
+)   
+
 
 export default BarChartBox;
