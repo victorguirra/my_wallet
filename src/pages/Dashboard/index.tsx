@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import { Container, Content } from './styles';
 
 import ContentHeader from '../../components/ContentHeader';
@@ -95,14 +95,14 @@ const Dashboard: React.FC = () => {
         return totalGains - totalExpenses;
     }, [totalGains, totalExpenses]) 
 
-    function handleMonthSelected(month: string){
+    const handleMonthSelected = useCallback((month: string) => {
         try{
             const parseMonth = Number(month);
             setMonthSelected(parseMonth);
         }catch{
             throw new Error('Invalid month value. Is accept 0 - 24.');
         }
-    }
+    }, [])
 
     const message = useMemo(() => {
         if(totalBalance < 0){
@@ -300,14 +300,14 @@ const Dashboard: React.FC = () => {
 
     },[monthSelected, yearSelected])
 
-    function handleYearSelected(year: string){
+    const handleYearSelected = useCallback((year: string) => {
         try{
             const parseMonth = Number(year);
             setYearSelected(parseMonth);
         }catch{
             throw new Error('Invalid year value. Is accept integer numbers.');
         }
-    }
+    },[])
 
     useEffect(() => {
         yearsOptions.map((item, index) => {
