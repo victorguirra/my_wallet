@@ -31,6 +31,14 @@ export const Header = styled.div`
         margin-bottom:20px;
         padding-left:20px;
     }
+
+    @media(max-width:1200px){
+        flex-direction:column;
+        
+        > h2{
+            padding-left:0;
+        }
+    }
 `;
 
 export const LegendContainer = styled.ul`
@@ -64,6 +72,13 @@ export const Legend = styled.li<ILegendProps>`
 
     > span{
         margin-left:7px;
+    }
+
+    @media(max-width:1280px){
+        div{
+            width:30px;
+            height:30px;
+        }
     }
 `
 

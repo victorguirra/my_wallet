@@ -12,6 +12,10 @@ export const Container = styled.div`
     display:flex;
     align-items:center;
     justify-content:space-between;
+
+    @media(max-width:500px){
+        flex-direction:column;
+    }
 `;
 
 export const TitleContainer = styled.div<ITitleContainerProps>`
@@ -25,10 +29,27 @@ export const TitleContainer = styled.div<ITitleContainerProps>`
             border-bottom:10px solid ${ props => props.lineColor };
         }
     }
+
+    @media(max-width:500px){
+        h2{
+            font-size:18px;
+            
+            &::after{
+                border-bottom:5px solid ${ props => props.lineColor };
+            }
+        }
+    }
 `;
 
 export const Controllers = styled.div`
     display:flex;
     align-items:center;
     justify-content:center;
+
+    @media(max-width:500px){
+        width:100%;
+        justify-content:space-around;
+        
+        margin-top:20px;
+    }
 `;
