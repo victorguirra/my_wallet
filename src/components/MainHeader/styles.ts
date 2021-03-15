@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.header`
     grid-area:MH;
     
-    padding:0 10px;
+    padding:0 30px;
     background-color:${ props => props.theme.colors.secondary };
 
     display:flex;
