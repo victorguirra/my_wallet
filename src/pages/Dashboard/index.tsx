@@ -330,7 +330,7 @@ const Dashboard: React.FC = () => {
     return(
         <Container>
 
-            <ContentHeader title="Dashboard" lineColor={ colors.success }>
+            <ContentHeader title="Dashboard" lineColor={ colors.info }>
                 <SelectInput 
                     options={ monthOptions } 
                     defaultValue={ monthSelected }

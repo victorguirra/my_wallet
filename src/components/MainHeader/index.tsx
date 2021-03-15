@@ -9,15 +9,11 @@ import { AiFillSetting } from 'react-icons/ai';
 
 import { useColors } from '../../hooks/colors';
 
-import InputHeader from '../InputHeader';
-
 const MainHeader: React.FC = () => {
     const { colors } = useColors();
 
     return(
         <Container>
-
-            <InputHeader />
 
             <Profile>
 

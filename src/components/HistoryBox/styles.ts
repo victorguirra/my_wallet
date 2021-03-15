@@ -42,15 +42,17 @@ export const Header = styled.div`
     align-items:center;
     justify-content:space-between;
     
-    > h2{
+    > p{
         margin-bottom:20px;
         padding-left:20px;
+
+        font-size:22px;
     }
 
     @media(max-width:1200px){
         flex-direction:column;
         
-        > h2{
+        > p{
             padding-left:0;
         }
     }

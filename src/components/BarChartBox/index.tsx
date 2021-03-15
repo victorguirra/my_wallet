@@ -32,7 +32,7 @@ const BarChartBox: React.FC<IBarChartBoxProps> = ({ title, data }) => (
 
         <LeftSide>
             
-            <h2>{ title }</h2>
+            <p>{ title }</p>
 
             <LegendContainer>
                 {

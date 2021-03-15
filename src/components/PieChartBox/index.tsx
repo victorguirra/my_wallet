@@ -16,7 +16,7 @@ const PieChartBox: React.FC<IPieChartProps> = ({ data }) => (
 
         <SideLeft>
 
-            <h2>Relação</h2>
+            <p>Relação</p>
 
             <LegendContainer>
 

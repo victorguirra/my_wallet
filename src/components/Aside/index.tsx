@@ -22,7 +22,6 @@ import { useAuth } from '../../hooks/auth';
 import { useTheme } from '../../hooks/theme';
 
 import Toggle from '../Toogle';
-import logo from '../../assets/images/logo.svg';
 
 const Aside: React.FC = () => {
     const { signOut } = useAuth();
@@ -44,33 +43,28 @@ const Aside: React.FC = () => {
         <Container menuIsOpen={ toggleMenuIsOpen }>
             <Header>
                 <ToggleMenu onClick={ handleToggleMenu }>
-                    { toggleMenuIsOpen ? <MdClose /> : <MdMenu /> }
+                    { toggleMenuIsOpen ? <MdClose color="#fff"/> : <MdMenu color="#fff" /> }
                 </ToggleMenu>
 
-                <img src={ logo } alt="My Wallet" />
-                <h3>Minha Carteira</h3>
+                <p><span>$</span> Minha Carteira</p>
             </Header>
 
             <MenuContainer>
 
                 <MenuItem to="/">
-                    <MdDashboard />
-                    Dashboard
+                    <MdDashboard  size={ 35 }/>
                 </MenuItem>
                 
                 <MenuItem to="/list/entry-balance">
-                    <MdArrowUpward />
-                    Entradas
+                    <MdArrowUpward size={ 35 } />
                 </MenuItem>
                 
                 <MenuItem to="/list/exit-balance">
-                    <MdArrowDownward />
-                    Saídas
+                    <MdArrowDownward size={ 35 } />
                 </MenuItem>
                 
                 <MenuButton onClick={ signOut }>
-                    <MdExitToApp />
-                    Sair
+                    <MdExitToApp size={ 35 } />
                 </MenuButton>
 
             </MenuContainer>

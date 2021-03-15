@@ -45,9 +45,11 @@ export const Container = styled.div`
 export const LeftSide = styled.aside`
     padding:30px 20px;
 
-    > h2 {
+    > p {
         padding-left:20px;
         margin-bottom:10px;
+
+        font-size:22px;
     }
 
     @media(max-width:1200px){

@@ -35,7 +35,7 @@ const HistoryBox: React.FC<IHistoryBoxProps> = ({
 
         <Header>
 
-            <h2>Histórico de Saldo</h2>
+            <p>Histórico de Saldo</p>
 
             <LegendContainer>
                 

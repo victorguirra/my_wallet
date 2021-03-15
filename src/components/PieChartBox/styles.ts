@@ -42,15 +42,16 @@ export const Container = styled.div`
 export const SideLeft = styled.aside`
     padding:30px 20px;
     overflow:hidden;
-    h2{
+    p{
         margin-bottom:30px;
+        font-size:22px;
     }
 
     @media(max-width:1345px){
         padding:0 15px 5px;
         margin-bottom:7px;
 
-        h2{
+        p{
             margin-top:15px;
             margin-bottom:7px;
         }

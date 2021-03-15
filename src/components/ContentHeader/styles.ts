@@ -19,19 +19,22 @@ export const Container = styled.div`
 `;
 
 export const TitleContainer = styled.div<ITitleContainerProps>`
-    > h2{
+    > p{
+        
+        font-size:25px;
         color:${ props => props.theme.colors.white };
 
         &::after{
             content:'';
             display:block;
             width:55px;
-            border-bottom:10px solid ${ props => props.lineColor };
+            border-bottom:5px solid ${ props => props.lineColor };
+            border-radius:10px;
         }
     }
 
     @media(max-width:500px){
-        h2{
+        p{
             font-size:18px;
             
             &::after{

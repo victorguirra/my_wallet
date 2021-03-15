@@ -43,24 +43,20 @@ export const Header = styled.header`
     display:flex;
     align-items:center;
 
-    img{
-        width:40px;
-        height:40px;
-    }
+    p {
+        color:${ props => props.theme.colors.white };
+        font-size:22px;
 
-    h3{
-        color:${ props =>  props.theme.colors.white };
-        margin-left:12px;
+        span{
+            font-weight:bold;
+        }
     }
+       
 
     @media(max-width:800px){
         justify-content:center;
         
-        img{
-            display:none;
-        }
-        
-        h3{
+        p{
             display:none;
         }
     }
@@ -77,7 +73,7 @@ export const MenuItem = styled(Link)`
     color:${ props =>  props.theme.colors.white };
     text-decoration:none;
 
-    margin:7px 0;
+    margin:30px 0;
 
     display:flex;
     align-items:center;
@@ -99,7 +95,7 @@ export const MenuButton = styled.button`
     background-color:transparent;
 
     font-size:16px;    
-    margin:7px 0;
+    margin:30px 0;
 
     display:flex;
     align-items:center;
