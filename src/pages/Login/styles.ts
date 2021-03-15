@@ -18,14 +18,15 @@ export const Logo = styled.div`
 
     margin-bottom:30px;
 
-    img{
-        width:40px;
-        height:40px;
-    }
-
-    > h2{
+    
+    > p{
         color:${ props => props.theme.colors.white };
         margin-left:12px;
+        font-size:22px;
+
+        span{
+            font-weight:bold;
+        }
     }
 `;
 
@@ -39,15 +40,18 @@ export const Form = styled.form`
     background-color:${ props => props.theme.colors.tertiary };
 `;
 
-export const FormTitle = styled.h1`
+export const FormTitle = styled.p`
     color:${ props => props.theme.colors.white };
     
+    font-size:25px;
+
     margin-bottom:25px;
 
     &:after{
         content:'';
         display:block;
         width:55px;
-        border-bottom:10px solid ${ props => props.theme.colors.warning };
+        border-bottom:5px solid ${ props => props.theme.colors.warning };
+        border-radius:10px;
     }
 `;

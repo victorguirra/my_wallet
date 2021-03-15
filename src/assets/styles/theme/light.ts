@@ -10,7 +10,7 @@ const lightTheme = {
         black:'#FFF',
         gray:'#BFBFBF',
 
-        success:'rgb(222,40,40)',
+        success:'#04c984',
         info:'#8739F9',
         warning:'#00AAF2',
     }

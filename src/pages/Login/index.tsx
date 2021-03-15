@@ -18,10 +18,8 @@ const Login: React.FC = () => {
         <Container>
 
             <Logo>
-
-                <img src={ LogoImg } alt="Minha Carteira" />
                 
-                <h2>Minha Carteira</h2>
+                <p><span>$</span>Minha Carteira</p>
 
             </Logo>
 

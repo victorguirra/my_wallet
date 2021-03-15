@@ -8,7 +8,7 @@ export const Container = styled.button`
 
     border-radius:7px;
 
-    font-weight:bold;
+    font-size:15px;
 
     color:${ props => props.theme.colors.white };
     background-color:${ props => props.theme.colors.warning };
