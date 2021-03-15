@@ -2,17 +2,19 @@ const darkTheme =  {
     title:'dark',
 
     colors:{
-        primary:'#1B1F38',
-        secondary:'#252A48',
-        tertiary: '#313852',
+        primary:'#242424',
+        secondary:'#100F10',
+        tertiary: '#1B1B1B',
+        
 
         white:'#FFF',
         black:'#000',
         gray:'#BFBFBF',
 
-        success:'#4E41F0',
-        info:'#F7931B',
-        warning:'#E44C4E',
+        success:'#04c984',
+        error:'rgb(222,40,40)',
+        info:'#8739F9',
+        warning:'#00AAF2',
     }
 }
 

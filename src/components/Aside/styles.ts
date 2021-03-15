@@ -1,11 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 interface IContainerProps{
-    menuIsOpen: boolean;
-}
-
-interface IThemeToggleFooterProps{
     menuIsOpen: boolean;
 }
 
@@ -14,25 +10,30 @@ export const Container = styled.aside<IContainerProps>`
 
     background-color:${ props => props.theme.colors.secondary };
 
-    padding-left:20px;
-    border-right:1px solid ${ props => props.theme.colors.gray };
+    padding-bottom:50px;
 
     position:relative;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-between;
 
     @media(max-width:800px){
         width:185px;
 
-        padding-left:20px;
+        align-items:${ props => props.menuIsOpen ? 'center' : 'flex-start' };
+        justify-content:space-between;
+        
+        padding-left:${ props => props.menuIsOpen ? '0' : '30px' };
+        padding-bottom:50px;
+        padding-top:15px;
+
         position:fixed;
         z-index:2;
 
         height:${ props => props.menuIsOpen ? '100vh' : '70px' };
         overflow:hidden;
-
-        ${props => !props.menuIsOpen && css`
-            border:none;
-            border-bottom:1px solid ${ props => props.theme.colors.gray };
-        `};
     }
 `;
 
@@ -53,6 +54,8 @@ export const Header = styled.header`
     }
 
     @media(max-width:800px){
+        justify-content:center;
+        
         img{
             display:none;
         }
@@ -71,7 +74,7 @@ export const MenuContainer = styled.nav`
 `;
 
 export const MenuItem = styled(Link)`
-    color:${ props =>  props.theme.colors.info };
+    color:${ props =>  props.theme.colors.white };
     text-decoration:none;
 
     margin:7px 0;
@@ -92,7 +95,7 @@ export const MenuItem = styled(Link)`
 `;
 
 export const MenuButton = styled.button`
-    color:${ props =>  props.theme.colors.info };
+    color:${ props =>  props.theme.colors.white };
     background-color:transparent;
 
     font-size:16px;    
@@ -114,6 +117,7 @@ export const MenuButton = styled.button`
 `;
 
 export const ToggleMenu = styled.button`
+
     width:40px;
     height:40px;
 
@@ -135,15 +139,5 @@ export const ToggleMenu = styled.button`
         display:flex;
         align-items:center;
         justify-content:center;
-    }
-`;
-
-export const ThemeToggleFooter = styled.footer<IThemeToggleFooterProps>`
-    display:none;
-    position:absolute;
-    bottom:80px;
-
-    @media(max-width:800px){
-        display:${ props => props.menuIsOpen ? 'flex' : 'none' };
     }
 `;

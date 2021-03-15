@@ -25,7 +25,7 @@ export const Container = styled.div`
     margin:10px 0;
 
     color:${ props => props.theme.colors.white };
-    background-color:${ props => props.theme.colors.tertiary };
+    background-color:${ props => props.theme.colors.secondary };
 
     border-radius:7px;
 

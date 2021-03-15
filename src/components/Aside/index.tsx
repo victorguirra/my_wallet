@@ -6,7 +6,7 @@ import {
         MenuItem,
         MenuButton,
         ToggleMenu,
-        ThemeToggleFooter
+
 } from './styles'; 
 
 import {
@@ -75,14 +75,14 @@ const Aside: React.FC = () => {
 
             </MenuContainer>
 
-            <ThemeToggleFooter menuIsOpen={ toggleMenuIsOpen }>
-                <Toggle 
-                    labelLeft="Light"
-                    labelRight="Dark"
-                    checked={ darkTheme }
-                    onChange={ handleChangeTheme }
-                />
-            </ThemeToggleFooter>
+            
+            <Toggle 
+                labelLeft="Light"
+                labelRight="Dark"
+                checked={ darkTheme }
+                onChange={ handleChangeTheme }
+            />
+            
 
         </Container>
     );

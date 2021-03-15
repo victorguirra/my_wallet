@@ -1,45 +1,36 @@
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 import { 
         Container,
         Profile, 
 } from './styles'; 
 
-import { useTheme } from '../../hooks/theme';
+import { BsFillBellFill } from 'react-icons/bs';
+import { AiFillSetting } from 'react-icons/ai';
 
-import Toggle from '../Toogle';
-import emojis from '../../utils/emojis';
+import { useColors } from '../../hooks/colors';
 
 const MainHeader: React.FC = () => {
-    const { toggleTheme, theme } = useTheme();
-
-    const [ darkTheme, setDarkTheme ] = useState(() => theme.title === 'dark' ? true : false );
-
-    const handleChangeTheme = () => {
-        setDarkTheme(!darkTheme);
-        toggleTheme();
-    }
-
-    const emoji = useMemo(() => {
-        const index = Math.floor(Math.random() * emojis.length);
-        
-        return emojis[index];
-    }, [])
+    const { colors } = useColors();
 
     return(
         <Container>
 
-            <Toggle
-                labelLeft="Light" 
-                labelRight="Dark"
-                checked={ darkTheme }
-                onChange={ handleChangeTheme }
-            />
+            <input type="text" placeholder="Pesquisar" />
 
             <Profile>
 
-                <h3>Olá, { emoji }</h3>
+                <button>
+                    <BsFillBellFill size={ 25 } color={ colors.info } />
+                </button>
 
-                <span>Victor Guirra</span>
+                <button>
+                    <AiFillSetting size={ 25 } color={ colors.info } />
+                </button>
+
+                <img 
+                    src="https://avatars.githubusercontent.com/u/63051439?s=400&u=f0814cc2139714bd98f844764eeb7f013bacd8ce&v=4" 
+                    alt="Victor Guirra" 
+                />
 
             </Profile>
 

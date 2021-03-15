@@ -10,9 +10,9 @@ const lightTheme = {
         black:'#FFF',
         gray:'#BFBFBF',
 
-        success:'#03BB85',
-        info:'#3B5598',
-        warning:'#FF6961',
+        success:'rgb(222,40,40)',
+        info:'#8739F9',
+        warning:'#00AAF2',
     }
 }
 

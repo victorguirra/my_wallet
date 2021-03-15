@@ -1,6 +1,8 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import { Container, Content } from './styles';
 
+import { useColors } from '../../hooks/colors';
+
 import ContentHeader from '../../components/ContentHeader';
 import SelectInput from '../../components/SelectInput';
 import WalletBox from '../../components/WalletBox';
@@ -19,6 +21,8 @@ import GrinningIcon from '../../assets/images/grinning.svg';
 import SadIcon from '../../assets/images/sad.svg';
 
 const Dashboard: React.FC = () => {
+    const { colors } = useColors();
+
     const [ monthSelected, setMonthSelected ] = useState<number>(0);
     const [ yearSelected, setYearSelected ] = useState<number>(0);
 
@@ -29,8 +33,8 @@ const Dashboard: React.FC = () => {
                 label:month,
             }
         })
-    }, [])        
-
+    }, [])
+  
     const yearsOptions = useMemo(() => {
         let uniqueYears: number[] = [];
         
@@ -147,13 +151,13 @@ const Dashboard: React.FC = () => {
                 name:"Entradas",
                 value:totalGains,
                 percent:percentGains ? percentGains : 0,
-                color:'#E44C4E'
+                color:colors.info
             },
             {
                 name:"Saídas",
                 value:totalExpenses,
                 percent:percentExpenses ? percentExpenses : 0,
-                color:'#F7931B'
+                color:colors.warning
             }
         ]
 
@@ -243,13 +247,13 @@ const Dashboard: React.FC = () => {
                 name:'Recorrentes',
                 amount:amountRecurrent,
                 percent: recurrentPercenct ? recurrentPercenct : 0,
-                color:'#F7931B'
+                color:colors.info
             },
             {
                 name:'Eventuais',
                 amount:amountEventual,
                 percent:eventualPercent ? eventualPercent : 0,
-                color:'#E44C43'
+                color:colors.warning
             }
         ]
 
@@ -288,13 +292,13 @@ const Dashboard: React.FC = () => {
                 name:'Recorrentes',
                 amount:amountRecurrent,
                 percent:recurrentPercenct ? recurrentPercenct : 0,
-                color:'#F7931B'
+                color: colors.info
             },
             {
                 name:'Eventuais',
                 amount:amountEventual,
                 percent:eventualPercent ? eventualPercent : 0 ,
-                color:'#E44C43'
+                color:colors.warning
             }
         ]
 
@@ -326,7 +330,7 @@ const Dashboard: React.FC = () => {
     return(
         <Container>
 
-            <ContentHeader title="Dashboard" lineColor="#F7931B">
+            <ContentHeader title="Dashboard" lineColor={ colors.success }>
                 <SelectInput 
                     options={ monthOptions } 
                     defaultValue={ monthSelected }
@@ -350,7 +354,7 @@ const Dashboard: React.FC = () => {
                     amount={ totalBalance }
                     footerLabel="Atualizado com base nas entradas e saídas!"
                     icon="dolar"
-                    color="#4E41F0"
+                    color={ totalBalance >= 0 ? colors.success : colors.info }
                 />
 
                 <WalletBox 
@@ -358,7 +362,7 @@ const Dashboard: React.FC = () => {
                     amount={ totalGains }
                     footerLabel="Atualizado com base nas entradas e saídas!"
                     icon="arrowUp"
-                    color="#F7931B"
+                    color={ colors.info }
                 />
 
                 <WalletBox 
@@ -366,7 +370,7 @@ const Dashboard: React.FC = () => {
                     amount={ totalExpenses }
                     footerLabel="Atualizado com base nas entradas e saídas!"
                     icon="arrowDown"
-                    color="#E44C4E"
+                    color={ colors.warning }
                 />
 
                 <MessageBox 
@@ -380,8 +384,8 @@ const Dashboard: React.FC = () => {
                 
                 <HistoryBox 
                     data={ historyData }
-                    lineColorAmountEntry="#F7931B"
-                    lineColorAmountOutput="#E44C4E"
+                    lineColorAmountEntry={ colors.info }
+                    lineColorAmountOutput={ colors.warning }
                 />
 
                 <BarChartBox 

@@ -6,10 +6,13 @@ export const Container = styled.div`
 
     grid-area:CT;
 
-    padding:25px;
+    padding:30px;
 
     color:${ props => props.theme.colors.white };
-    background-color:${ props => props.theme.colors.primary };   
+    background-color:${ props => props.theme.colors.primary };  
+
+    border-top-left-radius:30px;
+    border-bottom-left-radius:30px;
 
     ::-webkit-scrollbar{
         width:10px;

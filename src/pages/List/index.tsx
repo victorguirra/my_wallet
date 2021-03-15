@@ -1,6 +1,8 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { Filters } from './styles';
 
+import { useColors } from '../../hooks/colors';
+
 import ContentHeader from '../../components/ContentHeader';
 import SelectInput from '../../components/SelectInput';
 import HistoryFinanceCard from '../../components/HistoryFinanceCard';
@@ -30,6 +32,7 @@ interface IData{
 }
 
 const List: React.FC<IRouteParams> = ({ match }) => {
+    const { colors } = useColors();
 
     const [ data, setData ] = useState<IData[]>([]);
 
@@ -44,11 +47,11 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         
         return movementType === 'entry-balance' ? {
             title: 'Entradas',
-            lineColor:'#4E41F0',
+            lineColor:colors.success,
             listData: Gains
         } : {
             title:'Saídas',
-            lineColor:'#E44C4E',
+            lineColor:colors.warning,
             listData: Expenses
         };
 
@@ -115,7 +118,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
                 amountFormatted: formatCurrency(Number(item.amount)),
                 frequency: item.frequency,
                 dateFormatted: formatDate(item.date),
-                tagColor: item.frequency === 'recorrente' ? '#4E41F0' : '#E44C4E'
+                tagColor: item.frequency === 'recorrente' ? colors.success : colors.warning
             }
         })
 
