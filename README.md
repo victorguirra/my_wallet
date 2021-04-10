@@ -31,6 +31,12 @@ Neste app o usuário pode visualizar um dashboard com seus registros financeiros
 
 ---
 
+## Principais Features ⚙️
+
+A aplicação consome os dados de um arquivo JSON e os exibe em um dashboard utilizando gráficos e componentes.
+
+---
+
 ## Galeria 🖼️
 
 <div>
