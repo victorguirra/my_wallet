@@ -1,46 +1,97 @@
-# Getting Started with Create React App
+# My Wallet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Sobre o Projeto 📚
 
-## Available Scripts
+Foi desenvolvido um app de controle de finanças.
 
-In the project directory, you can run:
+Neste app o usuário pode visualizar um dashboard com seus registros financeiros.
 
-### `yarn start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tecnologias Utilizadas 🚀
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Typescript
+- React JS
+- Context API
+- Hooks (useMemo, useState, useEffect)
+- Styled Components
+- Recharts
+- React Router Dom
 
-### `yarn test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Pontos Explorados 🎯
 
-### `yarn build`
+- Componentização
+- Gerenciamento de Estado (Context API)
+- Tipagem Estática (Typescript)
+- Trabalho com Gráficos
+- Trabalho com Datas
+- Troca de Tema
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Galeria 🖼️
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<div>
+    <img src="https://www.linkpicture.com/q/SaidasLight.png" width="250">
+    <img src="https://www.linkpicture.com/q/DashboardLight1.png" width="250" />
+    <img src="https://www.linkpicture.com/q/DashboardLight2.png" width="250" />
+</div>
 
-### `yarn eject`
+<div>
+    <img src="https://www.linkpicture.com/q/SaidasDark.png" width="250">
+    <img src="https://www.linkpicture.com/q/EntradasDark.png" width="250" />
+    <img src="https://www.linkpicture.com/q/DashboardDark2.png" width="250" />
+</div>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<div>
+    <img src="https://www.linkpicture.com/q/DashboardDark.png" width="250">
+    <img src="https://www.linkpicture.com/q/LoginLight.png" width="250" />
+    <img src="https://www.linkpicture.com/q/LoginDark.png" width="250" />
+</div>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Acessando o Projeto na Web 🌍
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Para acessar o resultado final do projeto, acesse o link abaixo:
 
-## Learn More
+https://my-wallet-vert.vercel.app/
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Você deverá usar o seguinte email e senha:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+Email: usuario.teste@gmail.com
+Password: 123456
+```
+
+---
+
+## Acessando o Projeto 📂
+
+O primeiro passo é clonar o repositório. Para isso, rode o seguinte comando em seu terminal:
+
+```bash
+    $ git clone https://github.com/victorguirra/my_wallet.git
+```
+
+Depois, você deve acessar a pasta do projeto.
+
+```bash
+    $ cd my_wallet
+```
+
+E pronto, você já estará na página do projeto.
+
+---
+
+### Contato 📞
+
+- Email - victor.hugo.guirra@gmail.com
+- Linkedin - https://www.linkedin.com/in/victorguirra-2451b4157/
+- Whatsapp - 61 985622749
+
+---
+
+<h3 align="center">Desenvolvido Por: Victor Guirra 💻</h3>
