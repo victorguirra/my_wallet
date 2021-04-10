@@ -39,19 +39,21 @@ A aplicação consome os dados de um arquivo JSON e os exibe em um dashboard uti
 
 ## Galeria 🖼️
 
-<div>
+OBS: Para ver melhor a imagem, basta clicar em cima dela!
+
+<div align="center">
     <img src="https://www.linkpicture.com/q/SaidasLight.png" width="250">
     <img src="https://www.linkpicture.com/q/DashboardLight1.png" width="250" />
     <img src="https://www.linkpicture.com/q/DashboardLight2.png" width="250" />
 </div>
 
-<div>
+<div align="center">
     <img src="https://www.linkpicture.com/q/SaidasDark.png" width="250">
     <img src="https://www.linkpicture.com/q/EntradasDark.png" width="250" />
     <img src="https://www.linkpicture.com/q/DashboardDark2.png" width="250" />
 </div>
 
-<div>
+<div align="center">
     <img src="https://www.linkpicture.com/q/DashboardDark.png" width="250">
     <img src="https://www.linkpicture.com/q/LoginLight.png" width="250" />
     <img src="https://www.linkpicture.com/q/LoginDark.png" width="250" />
